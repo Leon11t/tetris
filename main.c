@@ -1,32 +1,23 @@
 #include <stdio.h>
 #include <string.h>
+#include <pthread.h>
 #include "figures.h"
+#include "board.h"
 
-#define BOARD_HEIGHT 20
-#define BOARD_WEIGHT 20
-
-uint8_t board[BOARD_WEIGHT][BOARD_HEIGHT] = {{"  1  2  3"}};
+uint8_t board[BOARD_HEIGHT][BOARD_LENGTH];
 extern Figure figure_t;
-
-
-
-const char *figure_m[4] =
-{
-    "  11    ",
-    "111111  ",
-    "        ",
-    "        "
-};
 
 
 int main()
 {
-    Object obj;
-    figureRotate(&obj, &figure_t, DEG_90);
-    figureGetSize(&obj);
+//    Object obj;
+//    figureRotate(&obj, &figure_t, DEG_90);
+//    figureGetSize(&obj);
 
+    boardInit(&board);
+    boardDraw(&board);
 
-
+    //putchar(178);
 
 
     return 0;

@@ -164,20 +164,20 @@ void figureRotate(Object *obj, Figure *fig, eRotation rot)
 {
     switch (rot){
     case DEG_0:
-        obj->pFigure = (uint8_t *)fig->f_0;
-        printf("switch 0x%x\n",obj->pFigure);
+        obj->pFigure = (uint8_t **)fig->f_0;
+        obj->rotation = DEG_0;
         break;
     case DEG_90:
-        obj->pFigure = (uint8_t *)fig->f_90;
-        printf("switch 0x%x\n",obj->pFigure);
+        obj->pFigure = (uint8_t **)fig->f_90;
+        obj->rotation = DEG_90;
         break;
     case DEG_180:
-        obj->pFigure = (uint8_t *)fig->f_180;
-        printf("switch 0x%x\n",obj->pFigure);
+        obj->pFigure = (uint8_t **)fig->f_180;
+        obj->rotation = DEG_180;
         break;
     case DEG_240:
-        obj->pFigure = (uint8_t *)fig->f_240;
-        printf("switch 0x%x\n",obj->pFigure);
+        obj->pFigure = (uint8_t **)fig->f_240;
+        obj->rotation = DEG_240;
         break;
     default:
         break;
@@ -191,11 +191,26 @@ void figureGetSize(Object *obj)
     {
         for(uint8_t j =0; j < strlen(*obj->pFigure)+1; j++)  //+1 <-- string terminator
         {
-            //printf("Address 0x%x\n: ", *(*(obj->pFigure+i)+j));
             if(*(*(obj->pFigure+i)+j) == 0x31)
             {
                 obj->f_size[i]++;
             }
         }
     }
+}
+
+void figureMoveRight(Object *obj)
+{
+
+}
+
+
+void figureMoveLeft(Object *obj)
+{
+
+}
+
+void figureUpdate(Object *obj)
+{
+
 }

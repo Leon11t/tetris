@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.c \
-           figures.c
+           figures.c \
+    board.c
 
 HEADERS += \
-    figures.h
+    figures.h \
+    board.h

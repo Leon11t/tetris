@@ -33,6 +33,7 @@ typedef struct
 
 void figureGetSize(Object *obj);
 void figureRotate(Object *obj, Figure *fig, eRotation rot);
+void figureUpdate(Object *obj);
 
 
 
