@@ -6,12 +6,22 @@
 
 typedef enum
 {
-    DEG_0   = 0,
-    DEG_90  = 1,
-    DEG_180 = 2,
-    DEG_240 = 3
-}eRotation;
+    DEG_0,
+    DEG_90,
+    DEG_180,
+    DEG_240
+}eROTATION;
 
+typedef enum
+{
+    FIG_I,
+    FIG_J,
+    FIG_L,
+    FIG_O,
+    FIG_S,
+    FIG_T,
+    FIG_Z
+}eFIGURE;
 
 typedef struct
 {
@@ -27,12 +37,12 @@ typedef struct
     uint8_t f_size[4];
     uint8_t cord_x;
     uint8_t cord_y;
-    eRotation rotation;
+    eROTATION rotation;
 }Object;
 
-
+void figureInit(void);
 void figureGetSize(Object *obj);
-void figureRotate(Object *obj, Figure *fig, eRotation rot);
+void figureRotate(Object *obj, eFIGURE fig, eROTATION rot);
 void figureUpdate(Object *obj);
 
 

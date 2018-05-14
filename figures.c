@@ -1,5 +1,7 @@
 #include "figures.h"
 
+Figure *figureList[7];
+
 Figure figure_o = {
     .f_0 =
     {
@@ -160,23 +162,35 @@ Figure figure_t = {
 };
 
 
-void figureRotate(Object *obj, Figure *fig, eRotation rot)
+void figureInit(void)
+{
+    figureList[FIG_I] = &figure_i;
+    figureList[FIG_J] = &figure_j;
+    figureList[FIG_L] = &figure_l;
+    figureList[FIG_O] = &figure_o;
+    figureList[FIG_S] = &figure_s;
+    figureList[FIG_T] = &figure_t;
+    figureList[FIG_Z] = &figure_z;
+}
+
+
+void figureRotate(Object *obj, eFIGURE fig, eROTATION rot)
 {
     switch (rot){
     case DEG_0:
-        obj->pFigure = (uint8_t **)fig->f_0;
+        obj->pFigure = (uint8_t **)figureList[fig]->f_0;
         obj->rotation = DEG_0;
         break;
     case DEG_90:
-        obj->pFigure = (uint8_t **)fig->f_90;
+        obj->pFigure = (uint8_t **)figureList[fig]->f_90;
         obj->rotation = DEG_90;
         break;
     case DEG_180:
-        obj->pFigure = (uint8_t **)fig->f_180;
+        obj->pFigure = (uint8_t **)figureList[fig]->f_180;
         obj->rotation = DEG_180;
         break;
     case DEG_240:
-        obj->pFigure = (uint8_t **)fig->f_240;
+        obj->pFigure = (uint8_t **)figureList[fig]->f_240;
         obj->rotation = DEG_240;
         break;
     default:
