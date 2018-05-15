@@ -1,20 +1,23 @@
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>
+#include <time.h>
+#include <stdlib.h>
 #include "figures.h"
 #include "board.h"
 
 uint8_t board[BOARD_HEIGHT][BOARD_LENGTH];
-extern Figure *figureList[7];
+//extern Figure *figureList[];
 
 
 int main()
 {
+    srand(time(NULL));
+
     Object obj;
     figureInit();
-    int i = 0;
-    figureRotate(&obj, i, DEG_90);
-    figureGetSize(&obj);
+    figureRandomObj(&obj);
+
 
     boardInit(&board);
     boardDraw(&board);

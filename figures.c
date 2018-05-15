@@ -1,8 +1,8 @@
 #include "figures.h"
 
-Figure *figureList[7];
+static Figure *figureList[7];
 
-Figure figure_o = {
+static Figure figure_o = {
     .f_0 =
     {
         "1111    ",
@@ -12,7 +12,7 @@ Figure figure_o = {
     },
 };
 
-Figure figure_i = {
+static Figure figure_i = {
     .f_0 =
     {
         "11      ",
@@ -30,7 +30,7 @@ Figure figure_i = {
 };
 
 
-Figure figure_z = {
+static Figure figure_z = {
     .f_0 =
     {
         "1111    ",
@@ -48,7 +48,7 @@ Figure figure_z = {
     },
 };
 
-Figure figure_s = {
+static Figure figure_s = {
     .f_0 =
     {
         "  1111  ",
@@ -65,7 +65,7 @@ Figure figure_s = {
     },
 };
 
-Figure figure_l = {
+static Figure figure_l = {
     .f_0 =
     {
         "11      ",
@@ -97,7 +97,7 @@ Figure figure_l = {
     },
 };
 
-Figure figure_j = {
+static Figure figure_j = {
     .f_0 =
     {
         "  11    ",
@@ -129,7 +129,7 @@ Figure figure_j = {
     },
 };
 
-Figure figure_t = {
+static Figure figure_t = {
     .f_0 =
     {
         "  11    ",
@@ -200,18 +200,20 @@ void figureRotate(Object *obj, eFIGURE fig, eROTATION rot)
 
 
 void figureGetSize(Object *obj)
-{
+{   
     for(uint8_t i =0; i < 4; i++)
     {
+        obj->f_size[i] = 0;                                  // clear size
         for(uint8_t j =0; j < strlen(*obj->pFigure)+1; j++)  //+1 <-- string terminator
         {
-            if(*(*(obj->pFigure+i)+j) == 0x31)
+            if(*(*(obj->pFigure+i) + j) == 0x31)
             {
                 obj->f_size[i]++;
             }
         }
     }
 }
+
 
 void figureMoveRight(Object *obj)
 {
@@ -227,4 +229,26 @@ void figureMoveLeft(Object *obj)
 void figureUpdate(Object *obj)
 {
 
+}
+
+void figureRandomObj(Object *obj)
+{
+    eFIGURE   randFig = (eFIGURE)rand() % 7;
+    eROTATION randRot;
+
+    if(randFig == FIG_O)
+    {
+        randRot = DEG_0;
+    }
+    else if((randFig == FIG_I) || (randFig == FIG_S) || (randFig ==FIG_Z))
+    {
+        randRot = (eROTATION)rand() % 2;
+    }
+    else
+    {
+        randRot = (eROTATION)rand() % 4;
+    }
+
+    figureRotate(obj, randFig, randRot);
+    figureGetSize(obj);
 }

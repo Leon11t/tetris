@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <strings.h>
+#include <stdlib.h>
 
 typedef enum
 {
@@ -44,6 +45,8 @@ void figureInit(void);
 void figureGetSize(Object *obj);
 void figureRotate(Object *obj, eFIGURE fig, eROTATION rot);
 void figureUpdate(Object *obj);
+void figureRandomObj(Object *obj);
+
 
 
 

@@ -1,7 +1,9 @@
 #ifndef BOARD_H
 #define BOARD_H
+
 #include <stdio.h>
 #include <stdint.h>
+
 
 #define BOARD_HEIGHT 20
 #define BOARD_LENGTH 22

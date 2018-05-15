@@ -1,5 +1,6 @@
 #include "board.h"
 
+
 void boardInit(uint8_t (*boardArray)[BOARD_HEIGHT][BOARD_LENGTH])
 {
     for(uint8_t hei = 0; hei < BOARD_HEIGHT; hei++)
