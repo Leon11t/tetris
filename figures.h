@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <strings.h>
 #include <stdlib.h>
+#include "board.h"
 
 typedef enum
 {

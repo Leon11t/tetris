@@ -240,7 +240,7 @@ void figureRandomObj(Object *obj)
     {
         randRot = DEG_0;
     }
-    else if((randFig == FIG_I) || (randFig == FIG_S) || (randFig ==FIG_Z))
+    else if((randFig == FIG_I) || (randFig == FIG_S) || (randFig == FIG_Z))
     {
         randRot = (eROTATION)rand() % 2;
     }
@@ -248,6 +248,9 @@ void figureRandomObj(Object *obj)
     {
         randRot = (eROTATION)rand() % 4;
     }
+
+    obj->cord_x = (BOARD_LENGTH - 1) / 2;           //init figure to apear in center of board
+    //obj->cord_y =
 
     figureRotate(obj, randFig, randRot);
     figureGetSize(obj);
